@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "al",
+            "request": "launch",
+            "name": "Publish",
+            "server": "https://bcsandboxmay3.australiasoutheast.cloudapp.azure.com",
+            "serverInstance": "NAV",
+            "tenant": "default",
+            "authentication": "UserPassword"
+        }
+    ]
+}
