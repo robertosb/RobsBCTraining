@@ -24,5 +24,13 @@ table 50101 "AI Translator Service Setup"
             Clustered = true;
         }
     }
+    procedure InsertIfNotExists()
+    begin
+        RESET;
+        IF NOT GET THEN BEGIN
+            INIT;
+            INSERT;
+        END;
+    end;
     
 }
