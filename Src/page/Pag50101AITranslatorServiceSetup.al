@@ -17,4 +17,8 @@ page 50101 "AI Translator Service Setup"
             }
         }
     }
+    trigger OnOpenPage()
+    begin
+        InsertIfNotExists();
+    end;
 }
