@@ -11,7 +11,14 @@
   "url": "",
   "logo": "",
   "capabilities": [],
-  "dependencies": [],
+  "dependencies": [
+    {
+      "appId" :"e868ad92-21b8-4e08-af2b-8975a8b06e04",
+      "name": "Image Analyzer",
+      "publisher": "Microsoft",
+      "version": "1.0.21812.0"
+    }    
+  ],
   "screenshots": [],
   "platform": "12.0.0.0",
   "application": "12.0.0.0",

@@ -10,7 +10,8 @@
             "tenant": "default",
             "authentication": "UserPassword",
             "startupObjectId": 22,
-            "startupObjectType": "Page"
+            "startupObjectType": "Page",
+            "schemaUpdateMode": "Recreate"
         }
     ]
 }
