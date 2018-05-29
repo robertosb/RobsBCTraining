@@ -15,7 +15,7 @@ pageextension 50100 AILanguageSalesOrder extends "Sales Order" //MyTargetPageId
     {
         addlast("F&unctions")
         {
-            group(Translate)
+            group(AILanguage)
             {
                 Action(Translate)
                 {

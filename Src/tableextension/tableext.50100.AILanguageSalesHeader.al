@@ -16,7 +16,7 @@ tableextension 50100 AILanguageSalesHeader extends "Sales Header" //MyTargetTabl
             begin
               getcustomer(Cust,"Bill-to Customer No.");
               langCode := getLanguageCode(Cust);
-               
+              updateAILanguage(langCode);                
             end;
         }        
         
@@ -34,5 +34,12 @@ tableextension 50100 AILanguageSalesHeader extends "Sales Header" //MyTargetTabl
             Exit(AiLanguages.Code);
       END;
       Exit('');
-    end;    
+    end;   
+    local procedure updateAILanguage(lLangCode:code[10])
+    begin
+      if langCode <> '' then 
+        Rec."AI Language" := lLangCode;
+        Rec.Modify();
+      end;
+    end; 
 }
