@@ -37,7 +37,8 @@ tableextension 50100 AILanguageSalesHeader extends "Sales Header" //MyTargetTabl
     end;   
     local procedure updateAILanguage(lLangCode:code[10])
     begin
-      if langCode <> '' then 
+      if lLangCode <> '' then 
+      begin
         Rec."AI Language" := lLangCode;
         Rec.Modify();
       end;
