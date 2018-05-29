@@ -5,42 +5,43 @@ tableextension 50100 AILanguageSalesHeader extends "Sales Header" //MyTargetTabl
         field(50100; "AI Language"; Code[10])
         {
             Caption = 'AI Language';
-            TableRelation = "AI Supported Language".Code;             
+            TableRelation = "AI Supported Language".Code;
             //DataClassification = ToBeClassified;
         }
         modify("Bill-to Customer No.")
         {
             trigger OnAfterValidate()
-            var Cust:record Customer; 
-                langCode:code[10];           
+            var
+                Cust: record Customer;
+                langCode: code[10];
             begin
-              getcustomer(Cust,"Bill-to Customer No.");
-              langCode := getLanguageCode(Cust);
-              updateAILanguage(langCode);                
+                getcustomer(Cust, "Bill-to Customer No.");
+                getCustomerLanguageCode(Cust, langCode);
+                updateAILanguageOnCustomer(langCode);
             end;
-        }        
-        
+        }
+
     }
-    local procedure getcustomer(var lCust:record Customer; lcustCode:code[20])
+    local procedure getcustomer(var lCust: record Customer; lcustCode: code[20])
     begin
-      lCust.get(lcustCode);
-    end;    
-    local procedure getLanguageCode(var lCust:record Customer):code[10]
-    var AiLanguages:record "AI Supported Language";
+        lCust.get(lcustCode);
+    end;
+
+    local procedure getCustomerLanguageCode(var lCust: record Customer; var AIlanguage : Code [20])
+    var
+        AiLanguages: record "AI Supported Language";
     begin
-      IF lcust."Language Code" <> '' then
-      begin
-          IF AiLanguages.GET(lCust."Language Code") then
-            Exit(AiLanguages.Code);
-      END;
-      Exit('');
-    end;   
-    local procedure updateAILanguage(lLangCode:code[10])
+        IF lcust."Language Code" <> '' then begin
+            IF AiLanguages.GET(lCust."Language Code") then
+                AIlanguage :=  AiLanguages.Code;
+        END;
+    end;
+
+    local procedure updateAILanguageOnCustomer(lLangCode: code[10])
     begin
-      if lLangCode <> '' then 
-      begin
-        Rec."AI Language" := lLangCode;
-        Rec.Modify();
-      end;
-    end; 
+        if lLangCode <> '' then begin
+            Rec."AI Language" := lLangCode;
+            Rec.Modify();
+        end;
+    end;
 }
