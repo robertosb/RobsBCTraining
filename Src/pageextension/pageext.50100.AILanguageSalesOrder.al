@@ -1,4 +1,4 @@
-pageextension 50100 AIExtension extends "Sales Order" //MyTargetPageId
+pageextension 50100 AILanguageSalesOrder extends "Sales Order" //MyTargetPageId
 {
     layout
     {
@@ -10,6 +10,31 @@ pageextension 50100 AIExtension extends "Sales Order" //MyTargetPageId
             }
         }
         
+    }
+    actions
+    {
+        addlast("F&unctions")
+        {
+            group(Translate)
+            {
+                Action(Translate)
+                {
+                    ApplicationArea = All;
+                    Caption='Translate';
+                    ToolTip = 'Translate';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    Image = Language;
+                    
+
+                    trigger OnAction();
+                    begin
+                        Message('Translate!');
+                    end;
+                }
+            }
+        }
     }
 
 }
